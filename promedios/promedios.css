@@ -1,0 +1,74 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+form {
+  display: grid;
+  place-items: center;
+  margin: 2.5rem auto;
+  width: 50rem;
+  height: auto;
+  border-radius: 1.6rem;
+  box-shadow: 0 0 0.6rem black;
+  background-color: rgb(211, 58, 58);
+  padding: 4rem 0;
+}
+
+form label {
+  font-size: 1.4rem;
+  color: white;
+}
+
+form input {
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 0.4rem;
+  border: none;
+  margin: 1rem;
+  padding: 0.5rem;
+  width: 80%;
+  height: 3rem;
+}
+
+form p {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 0;
+}
+
+form p.result {
+  font-size: 6rem;
+  color: white;
+  margin: 0;
+  padding: 1.8rem;
+  height: 6.5rem;
+}
+
+form button.button-calculate {
+  width: 70%;
+  padding: 2rem;
+  border-radius: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(211, 58, 58);
+  background-color: white;
+  cursor: pointer;
+  border: none;
+}
+
+@media screen and (max-width: 520px) {
+  form {
+    width: 30rem;
+  }
+  form p.result {
+    font-size: 3rem;
+  }
+}
