@@ -9,14 +9,43 @@ function calcularMonto() {
   const price = inputPrice.value;
   const discount = inputDiscount.value;
 
-  let result = ( price * (100 - discount)) / 100;
-
-  if (price == "" || discount == "") {
-    alert("You have to put both values")
-  } else if (discount >= 100 ){
-    alert("The discount can't be greater than 100")
-  } else {
-    pResult.innerText = '$' + result;
+  if (!price || !discount) {
+    alert('You have to complete both boxes');
   }
+  else {
+    calcularPorcentaje ();
+  }
+
+  function calcularPorcentaje () {
+    const voucherArray = [
+      'voucher %5',
+      'voucher %10',
+      'voucher %15',
+      'voucher %20',
+      'voucher %25',
+      'voucher %30',
+      'voucher %40',
+      'voucher %50',
+      'voucher %60',
+    ];
   
+    const discountArray = [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      40,
+      50,
+      60,
+    ]
+
+    for(let i = 0; voucherArray.length > i;i++) {
+      if (voucherArray[i] == inputDiscount.value) {
+        let result = ( price * (100 - discountArray[i])) / 100;
+        pResult.innerText = '$' + result;
+      }
+    }
+  }
 }

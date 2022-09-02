@@ -13,10 +13,21 @@
 <body>
   <form id="descuentos">
     <label for="price">Enter the price of the product:</label>
-    <input type="number" id="price">
+    <input type="number" id="price" autocomplete="off">
   
     <label for="discount">Enter the discount percentage:</label>
-    <input type="number" id="discount">
+    <input id="discount" list="discounts" autocomplete="off">
+    <datalist id="discounts">
+      <option value="voucher %5"></option>
+      <option value="voucher %10"></option>
+      <option value="voucher %15"></option>
+      <option value="voucher %20"></option>
+      <option value="voucher %25"></option>
+      <option value="voucher %30"></option>
+      <option value="voucher %40"></option>
+      <option value="voucher %50"></option>
+      <option value="voucher %60"></option>
+    </datalist>
 
     <p>The amount to pay is:</p>
     <p class="result"></p>
