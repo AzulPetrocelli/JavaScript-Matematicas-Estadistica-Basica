@@ -6,46 +6,87 @@ const pResult =  document.querySelector('.result');
 discountButton.addEventListener('click', calcularMonto);
 
 function calcularMonto() {
-  const price = inputPrice.value;
+  const price = Number(inputPrice.value);
   const discount = inputDiscount.value;
+  
+  
+  
+  //Esta es una forma de solucionarlo con arrays de objetos
+  const voucherArray =[
+    {
+      coupon: 'voucher %5',
+      discount: 5,
+    },
+    {
+      coupon: 'voucher %10',
+      discount: 10,
+    },
+    {
+      coupon: 'voucher %15',
+      discount: 10,
+    },
+    {
+      coupon: 'voucher %20',
+      discount: 20,
+    },
+    {
+      coupon: 'voucher %25',
+      discount: 25,
+    },
+    {
+      coupon: 'voucher %30',
+      discount: 30,
+    },
+    {
+      coupon: 'voucher %40',
+      discount: 40,
+    },
+    {
+      coupon: 'voucher %50',
+      discount: 50,
+    },
+    {
+      coupon: 'voucher %60',
+      discount: 60,
+    },
+  ]
 
-  if (!price || !discount) {
+  const isVoucherTrue = voucherArray.find(function(voucher){
+    return voucher.coupon == discount;
+  })
+
+  if (isVoucherTrue && price) {
+    let result = ( price * (100 - isVoucherTrue.discount)) / 100;
+    pResult.innerText = '$' + result;
+  } 
+  else if (!price || !discount) {
     alert('You have to complete both boxes');
+  } 
+  else {
+    alert("The voucher doesn't exist")
+    pResult.innerText = '';
+  }
+
+  //Esta es una forma de solucionarlo con objetos
+  /*
+  const voucherObject = {
+    'voucher %5': 5,
+    'voucher %10': 10,
+    'voucher %15': 15,
+    'voucher %20': 20,
+    'voucher %25': 25,
+    'voucher %30': 30,
+    'voucher %40': 40,
+    'voucher %50': 50,
+    'voucher %60': 60,
+  }
+
+  if (voucherObject[discount]){
+    let result = ( price * (100 - voucherObject[discount])) / 100;
+    pResult.innerText = '$' + result;
   }
   else {
-    calcularPorcentaje ();
+    alert("The voucher doesn't exist")
   }
-
-  function calcularPorcentaje () {
-    const voucherArray = [
-      'voucher %5',
-      'voucher %10',
-      'voucher %15',
-      'voucher %20',
-      'voucher %25',
-      'voucher %30',
-      'voucher %40',
-      'voucher %50',
-      'voucher %60',
-    ];
-  
-    const discountArray = [
-      5,
-      10,
-      15,
-      20,
-      25,
-      30,
-      40,
-      50,
-      60,
-    ]
-
-    for(let i = 0; voucherArray.length > i;i++) {
-      if (voucherArray[i] == inputDiscount.value) {
-        let result = ( price * (100 - discountArray[i])) / 100;
-        pResult.innerText = '$' + result;
-      }
-    }
-  }
+  */
 }
