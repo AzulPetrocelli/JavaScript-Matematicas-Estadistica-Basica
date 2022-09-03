@@ -12,13 +12,10 @@ const list = [
 
 function calcularPromedio (lista) {
   const cantidad = lista.length;
+  const total = lista.reduce((total, num) => total + num);
   const promedio = total / cantidad;
-  
-  let total
-  for (let i = 0; i < cantidad; i++) {
-    total = total + lista[i]
-  }
-  
+
   return promedio;
 };
 
+calcularPromedio(list);
