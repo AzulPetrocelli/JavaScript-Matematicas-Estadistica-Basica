@@ -19,3 +19,23 @@ function calcularPromedio (lista) {
 };
 
 calcularPromedio(list);
+
+function esPar(lista) {
+  let mediana ;
+  let index ;
+  const sortList = lista.sort(function(valorAcumulado, nuevoValor){
+    return valorAcumulado - nuevoValor
+  });
+
+  if (lista.length % 2 === 0) {
+    index = (sortList.length / 2);
+    mediana = (sortList[index] + sortList[index - 1]) / 2;
+  } else {
+    index = Math.floor((sortList.length) / 2);
+    mediana = sortList[index];
+  }
+
+  console.log('La mediana de la lista es: ' + mediana);
+}
+
+esPar(list)
