@@ -17,7 +17,6 @@ function calcularPromedio (lista) {
 
   return promedio;
 };
-
 calcularPromedio(list);
 
 function esPar(lista) {
@@ -37,5 +36,18 @@ function esPar(lista) {
 
   console.log('La mediana de la lista es: ' + mediana);
 }
-
 esPar(list)
+
+function calcularModa(list) {
+  const listCount = {};
+  
+  list.forEach(element => {
+    if (listCount[element]) {
+      listCount[element] = listCount[element] + 1;
+    } else {
+      listCount[element] = 1;
+    }
+  });
+
+  console.log(listCount);
+} 
