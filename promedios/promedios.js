@@ -10,6 +10,8 @@ const list = [
   153,
 ];
 
+
+// Calcular Promedio (Clases: Calculando el promedio, Metodo reduce)
 function calcularPromedio (lista) {
   const cantidad = lista.length;
   const total = lista.reduce((total, num) => total + num);
@@ -19,6 +21,8 @@ function calcularPromedio (lista) {
 };
 calcularPromedio(list);
 
+
+// Calcular mediana (Clases: Calculando mediana de una lista impar, calculando mediana de una lista par, Metodo sort)
 function calcularMediana(lista) {
   let mediana ;
   let index ;
@@ -38,6 +42,7 @@ function calcularMediana(lista) {
 }
 calcularMediana(list)
 
+// Calcular moda (Clases: Calculando la moda: arrays a partir de objetos, Calculando la moda:Arrays a partir de objetos)
 function calcularModa(list) {
   const listCount = {};
   
@@ -60,3 +65,21 @@ function calcularModa(list) {
   console.log('La moda es ' + moda)
 } 
 
+calcularModa(list)
+
+// Calcular rango medio (Clase: Reto: calcula otros tipos de promedio)
+function calcularRangoMedio(lista) {
+  function menorAmayor(valorAcumulado, nuevoValor) {
+    return valorAcumulado - nuevoValor;
+  }
+  const sortList = lista.sort(menorAmayor);
+
+  const minValor = sortList[0];
+  const maxValor = sortList[sortList.length - 1];
+
+  const rangoMedio = (minValor + maxValor) / 2;
+
+  return rangoMedio
+}
+
+calcularRangoMedio(list)
