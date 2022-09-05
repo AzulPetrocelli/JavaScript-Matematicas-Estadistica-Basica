@@ -19,7 +19,7 @@ function calcularPromedio (lista) {
 };
 calcularPromedio(list);
 
-function esPar(lista) {
+function calcularMediana(lista) {
   let mediana ;
   let index ;
   const sortList = lista.sort(function(valorAcumulado, nuevoValor){
@@ -36,7 +36,7 @@ function esPar(lista) {
 
   console.log('La mediana de la lista es: ' + mediana);
 }
-esPar(list)
+calcularMediana(list)
 
 function calcularModa(list) {
   const listCount = {};
@@ -49,5 +49,14 @@ function calcularModa(list) {
     }
   });
 
-  console.log(listCount);
+  const listCountArray = Object.entries(listCount)
+  const sortListCountArray = listCountArray.sort(function(valorAcumulado , nuevoValor){
+    return valorAcumulado[1] - nuevoValor[1]
+  });
+  
+  const maxNumber = sortListCountArray[sortListCountArray.length - 1];
+  const moda = maxNumber[0]
+
+  console.log('La moda es ' + moda)
 } 
+
