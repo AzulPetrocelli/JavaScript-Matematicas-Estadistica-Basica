@@ -83,3 +83,41 @@ function calcularRangoMedio(lista) {
 }
 
 calcularRangoMedio(list)
+
+// Calcular promedio ponderado: ((nota1 + credito1) + (nota2 + credito2) + (nota3 + credito3)) / (credito1 + credito2 + credito3)
+
+const notes = [
+  {
+    course: "Educación Física",
+    note: 10,
+    credit: 2,
+  },
+  {
+    course: "Programación",
+    note: 8,
+    credit: 5,
+  },
+  {
+    course: "Finanzas personales",
+    note: 7,
+    credit: 5,
+  },
+];
+
+function calcularPromedioPonderado(list) {
+  let notaCredito = [];
+  let credito = [];
+
+  list.forEach(element => {
+    notaCredito.push(element['note'] + element['credit']);
+    credito.push(element['credit']);
+  })
+
+  let notaCreditoTotal = notaCredito.reduce((total, num) => total + num);
+  let creditoTotal = credito.reduce((total, num) => total + num);
+
+  const promedioPonderado = (notaCreditoTotal / creditoTotal).toFixed(1)
+  console.log(promedioPonderado)
+}
+
+calcularPromedioPonderado(notes)
