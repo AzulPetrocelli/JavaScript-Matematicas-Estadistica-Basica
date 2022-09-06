@@ -23,7 +23,7 @@ PlatziMath.calcularMediana = (lista) =>{
     mediana = sortList[index];
   }
 
-  console.log('La mediana de la lista es: ' + mediana);
+  console.log('La mediana de la lista es: $' + mediana);
 }
 
 PlatziMath.calcularModa = (lista) => {
