@@ -15,17 +15,22 @@ function medianaByPerson (person) {
 }
 
 function predictSalary (person) {
-  salarys = findSalary (person)
+  const salarys = findSalary (person);
+  let payRasePercent = [];
 
-  calculate = (salaryList) => {
-    const oldSalary = salaryList[0]
-    const newSalary = salaryList[salaryList.length -1 ]
-    const percentageIncrement = (((newSalary - oldSalary) / (oldSalary * 100))) + 1
-    
+  for (let i = 1; i < salarys.length ; i++) {
+    const oldSalariy = salarys[i - 1];
+    const newSalary = salarys[i];
+    const growUp = newSalary - oldSalariy;
+    const percent = growUp / oldSalariy;
+    payRasePercent.push(percent);
+  };
 
-    const salaryIncrease = (newSalary * percentageIncrement)
-    console.log("Tu salario mensual del proximo año deberia ser: " + salaryIncrease)
-  }
+  const mediaPayRase = PlatziMath.calcularMediana(payRasePercent);
+  const lastSalary = salarys[salarys.length - 1];
+  const rase = Math.round(lastSalary * mediaPayRase)
 
-  calculate(salarys)
+  const increacedSalary = lastSalary + rase
+
+  return increacedSalary
 }

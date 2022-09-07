@@ -23,7 +23,7 @@ PlatziMath.calcularMediana = (lista) =>{
     mediana = sortList[index];
   }
 
-  console.log('La mediana de la lista es: $' + mediana);
+  return mediana;
 }
 
 PlatziMath.calcularModa = (lista) => {
@@ -45,7 +45,7 @@ PlatziMath.calcularModa = (lista) => {
   const maxNumber = sortListCountArray[sortListCountArray.length - 1];
   const moda = maxNumber[0]
 
-  console.log('La moda es ' + moda)
+  return moda
 } 
 
 PlatziMath.calcularRangoMedio = (lista) => {
@@ -93,5 +93,5 @@ PlatziMath.calcularPromedioPonderado = (lista) => {
   let creditoTotal = credito.reduce((total, num) => total + num);
 
   const promedioPonderado = (notaCreditoTotal / creditoTotal).toFixed(1)
-  console.log(promedioPonderado)
+  return promedioPonderado
 }
