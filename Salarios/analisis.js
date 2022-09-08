@@ -49,6 +49,37 @@ salarios.forEach(empleado => {
   });
 });
 
+// Reto: predecir la mediana de sueldo de la empresa el año que viene
+console.log(empresas)
+predictSalaryCompany = (nameCompany) => {
+  if (!empresas[nameCompany]) {
+    console.warn('La compania ingresada no esta registrada en nuestra base de datos')
+  } else {
+    let lastValue = Object.entries(empresas[nameCompany])
+    let salarys = lastValue[lastValue.length - 1][1]
+    return predictSalary(salarys)
+  }
+  
+  function predictSalary (salarys){
+    let payRasePercent = [];
+
+    for (let i = 1; i < salarys.length ; i++) {
+      const oldSalariy = salarys[i - 1];
+      const newSalary = salarys[i];
+      const growUp = newSalary - oldSalariy;
+      const percent = growUp / oldSalariy;
+      payRasePercent.push(percent);
+    };
+
+    const mediaPayRase = PlatziMath.calcularMediana(payRasePercent);
+    const lastSalary = salarys[salarys.length - 1];
+    const rase = Math.round(lastSalary * mediaPayRase)
+
+    const increacedSalary = lastSalary + rase
+
+    return increacedSalary
+  }
+}
 
 //  Reto: crear una funcion que calcule la mediana de la empresa y año que le digamos 
 
