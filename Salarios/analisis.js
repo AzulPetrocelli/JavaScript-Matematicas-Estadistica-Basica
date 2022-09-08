@@ -50,6 +50,20 @@ salarios.forEach(empleado => {
 });
 
 
+//  Reto: crear una funcion que calcule la mediana de la empresa y año que le digamos 
+
+function medianaEmpresaYear (nombre, year) {
+  if (!empresas[nombre]) {
+    console.warn('La empresa no esta registrada en nuestra base de datos')
+  } else {
+    for (yearElemento in empresas[nombre]) {
+      if (yearElemento == year) {
+        console.log(PlatziMath.calcularMediana(empresas[nombre][yearElemento]))
+      }
+    }
+  }
+}
+
 //  Reto: calcular la mediana de cada año de las empresas
 
 const medianaEmpresas = {};
