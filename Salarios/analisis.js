@@ -55,12 +55,10 @@ salarios.forEach(empleado => {
 function medianaEmpresaYear (nombre, year) {
   if (!empresas[nombre]) {
     console.warn('La empresa no esta registrada en nuestra base de datos')
+  } else if (!empresas[nombre][year]){
+    console.warn('La empresa no tiene registros de salarios en ese año')
   } else {
-    for (yearElemento in empresas[nombre]) {
-      if (yearElemento == year) {
-        console.log(PlatziMath.calcularMediana(empresas[nombre][yearElemento]))
-      }
-    }
+    console.log(PlatziMath.calcularMediana(empresas[nombre][year]))
   }
 }
 
