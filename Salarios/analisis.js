@@ -1,5 +1,3 @@
-console.log(salarios)
-
 function findPerson(namePerson) {
   return salarios.find(person => person.name == namePerson);
 }
@@ -34,3 +32,35 @@ function predictSalary (person) {
 
   return increacedSalary
 }
+
+const empresas = {};
+
+for (persona of salarios) {
+  for (trabajo of persona.trabajos) {
+
+    //aca estamos preguntando dentro de empresas si NO existe una propiedad
+    //con el nombre de la empresa que este iterando en ese momento entonces que cree
+    // una en forma de objeto
+   
+    if (!empresas[trabajo.empresa]){
+      empresas[trabajo.empresa] = {};
+      //{LexCorp: {},...}
+    }
+
+    //si dentro del objeto empresa no se encuentra la 
+    //propiedad año que la cree en forma de un array
+    
+    if (!empresas[trabajo.empresa][trabajo.year]) {
+      empresas[trabajo.empresa][trabajo.year] = [];
+       //{LexCorp: {2018: [],...}}
+    }
+
+    //te estamos agregando el valor de cada salario de la lista
+    // a la empresa correspondiente
+  
+    empresas[trabajo.empresa][trabajo.year].push(trabajo.salario)
+    //{LexCorp: {2018: [1050,1500,2040],...}}
+  }
+}
+
+console.log(empresas)
