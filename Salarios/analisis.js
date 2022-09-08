@@ -35,32 +35,18 @@ function predictSalary (person) {
 
 const empresas = {};
 
-for (persona of salarios) {
-  for (trabajo of persona.trabajos) {
-
-    //aca estamos preguntando dentro de empresas si NO existe una propiedad
-    //con el nombre de la empresa que este iterando en ese momento entonces que cree
-    // una en forma de objeto
-   
-    if (!empresas[trabajo.empresa]){
-      empresas[trabajo.empresa] = {};
-      //{LexCorp: {},...}
+salarios.forEach(empleado => {
+  empleado.trabajos.forEach(element => {
+    if (!empresas[element.empresa]) {
+      empresas[element.empresa] = {};
     }
 
-    //si dentro del objeto empresa no se encuentra la 
-    //propiedad año que la cree en forma de un array
-    
-    if (!empresas[trabajo.empresa][trabajo.year]) {
-      empresas[trabajo.empresa][trabajo.year] = [];
-       //{LexCorp: {2018: [],...}}
+    if (!empresas[element.empresa][element.year]) {
+      empresas[element.empresa][element.year] = [];
     }
 
-    //te estamos agregando el valor de cada salario de la lista
-    // a la empresa correspondiente
-  
-    empresas[trabajo.empresa][trabajo.year].push(trabajo.salario)
-    //{LexCorp: {2018: [1050,1500,2040],...}}
-  }
-}
+    empresas[element.empresa][element.year].push(element.salario)
+  })
+})
 
-console.log(empresas)
+console.log(empresas);
