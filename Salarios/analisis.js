@@ -45,8 +45,23 @@ salarios.forEach(empleado => {
       empresas[element.empresa][element.year] = [];
     }
 
-    empresas[element.empresa][element.year].push(element.salario)
-  })
-})
+    empresas[element.empresa][element.year].push(element.salario);
+  });
+});
 
-console.log(empresas);
+
+//  Reto: calcular la mediana de cada año de las empresas
+
+const medianaEmpresas = {};
+
+for (elemento in empresas) {
+  for (year in empresas[elemento]) {
+    if (!medianaEmpresas[elemento]) {
+      medianaEmpresas[elemento] = {};
+    }
+
+    if (!medianaEmpresas[elemento][year]) {
+      medianaEmpresas[elemento][year] = PlatziMath.calcularMediana(empresas[elemento][year]);
+    }
+  }
+}
