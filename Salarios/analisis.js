@@ -56,11 +56,9 @@ predictSalaryCompany = (nameCompany) => {
     console.warn('La compania ingresada no esta registrada en nuestra base de datos')
   } else {
     let lastValue = Object.entries(empresas[nameCompany])
-    let salarys = lastValue[lastValue.length - 1][1]
-    return predictSalary(salarys)
-  }
-  
-  function predictSalary (salarys){
+    let salary = lastValue[lastValue.length - 1][1]
+    let salarys = salary.sort((a,b) => {return a - b});
+    
     let payRasePercent = [];
 
     for (let i = 1; i < salarys.length ; i++) {
@@ -89,22 +87,38 @@ function medianaEmpresaYear (nombre, year) {
   } else if (!empresas[nombre][year]){
     console.warn('La empresa no tiene registros de salarios en ese año')
   } else {
-    console.log(PlatziMath.calcularMediana(empresas[nombre][year]))
+    return (PlatziMath.calcularMediana(empresas[nombre][year]))
   }
 }
 
 //  Reto: calcular la mediana de cada año de las empresas
 
-const medianaEmpresas = {};
+function medianaAnualEmpresas (empresa) {
+  let medianaEmpresaList = []
 
-for (elemento in empresas) {
-  for (year in empresas[elemento]) {
-    if (!medianaEmpresas[elemento]) {
-      medianaEmpresas[elemento] = {};
-    }
-
-    if (!medianaEmpresas[elemento][year]) {
-      medianaEmpresas[elemento][year] = PlatziMath.calcularMediana(empresas[elemento][year]);
-    }
+  if (!empresas[empresa]) {
+    console.warn('La empresa que ingreso no esta registrada');
+  } else {
+    const empresaYears = Object.keys(empresas[empresa]);
+    empresaYears.forEach(year => medianaEmpresaList.push(medianaEmpresaYear(empresa , year)));
   }
+
+  let payRasePercent = [];
+
+  for (let i = 1; i < medianaEmpresaList.length ; i++) {
+    const oldSalariy = medianaEmpresaList[i - 1];
+    const newSalary = medianaEmpresaList[i];
+    const growUp = newSalary - oldSalariy;
+    const percent = growUp / oldSalariy;
+    payRasePercent.push(percent);
+  };
+
+  const mediaPayRase = PlatziMath.calcularMediana(payRasePercent);
+  const lastMediana = medianaEmpresaList[medianaEmpresaList.length - 1];
+  const rase = Math.round(lastMediana * mediaPayRase)
+
+  const increacedSalary = lastMediana + rase
+  
+  console.log('El proximo año la mediana sera de: ' + increacedSalary)
+
 }
