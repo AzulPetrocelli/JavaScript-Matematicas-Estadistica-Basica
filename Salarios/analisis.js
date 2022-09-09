@@ -8,8 +8,8 @@ function findSalary (namePerson) {
 }
 
 function medianaByPerson (person) {
-  salarys = findSalary (person)
-  PlatziMath.calcularMediana(salarys)
+  const salarys = findSalary (person)
+  return PlatziMath.calcularMediana(salarys)
 }
 
 function predictSalary (person) {
@@ -58,7 +58,7 @@ predictSalaryCompany = (nameCompany) => {
     let lastValue = Object.entries(empresas[nameCompany])
     let salary = lastValue[lastValue.length - 1][1]
     let salarys = salary.sort((a,b) => {return a - b});
-    
+
     let payRasePercent = [];
 
     for (let i = 1; i < salarys.length ; i++) {
@@ -121,4 +121,27 @@ function medianaAnualEmpresas (empresa) {
   
   console.log('El proximo año la mediana sera de: ' + increacedSalary)
 
+}
+
+// analisis general
+
+medianaGeneral = () => {
+  const listMediana = salarios.map(persona => {return medianaByPerson(persona.name)})
+  const mediana = PlatziMath.calcularMediana(listMediana);
+
+  return mediana
+}
+
+medianaTop10 = () => {
+  const listMediana = salarios.map(persona => {return medianaByPerson(persona.name)})
+  listMediana.sort((a,b) => {return a - b})
+
+  let percent = Math.round(listMediana.length * 0.1)
+  listTop10 = listMediana.slice(listMediana.length - percent)
+  console.log(listMediana)
+  console.log(listTop10)
+
+  const medianaTop = PlatziMath.calcularMediana(listTop10);
+
+  return medianaTop
 }
